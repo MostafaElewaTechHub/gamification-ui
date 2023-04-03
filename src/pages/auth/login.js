@@ -66,10 +66,10 @@ const Page = () => {
     setMethod(value);
   }, []);
 
-  // const handleSkip = useCallback(() => {
-  //   auth.skip();
-  //   router.push("/");
-  // }, [auth, router]);
+  const handleSkip = useCallback(() => {
+    auth.skip();
+    router.push("/");
+  }, [auth, router]);
 
   return (
     <>
@@ -147,9 +147,9 @@ const Page = () => {
                 <Button fullWidth size="large" sx={{ mt: 3 }} type="submit" variant="contained">
                   Continue
                 </Button>
-                {/* <Button fullWidth size="large" sx={{ mt: 3 }} onClick={handleSkip}>
+                <Button fullWidth size="large" sx={{ mt: 3 }} onClick={handleSkip}>
                   Skip authentication
-                </Button> */}
+                </Button>
                 {/* <Alert color="primary" severity="info" sx={{ mt: 3 }}>
                   <div>
                     You can use <b>demo@devias.io</b> and password <b>Password123!</b>
