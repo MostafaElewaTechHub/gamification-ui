@@ -6,6 +6,9 @@ import UserIcon from '@heroicons/react/24/solid/UserIcon';
 import UserPlusIcon from '@heroicons/react/24/solid/UserPlusIcon';
 import UsersIcon from '@heroicons/react/24/solid/UsersIcon';
 import XCircleIcon from '@heroicons/react/24/solid/XCircleIcon';
+import PlusIcon from '@heroicons/react/24/solid/PlusIcon';
+import PuzzlePieceIcon from '@heroicons/react/24/solid/PuzzlePieceIcon';
+
 import { SvgIcon } from '@mui/material';
 
 export const items = [
@@ -37,6 +40,24 @@ export const items = [
     )
   },
   {
+    title: 'Create Touranment',
+    path: '/createTouranment',
+    icon: (
+      <SvgIcon fontSize="small">
+        <PlusIcon />
+      </SvgIcon>
+    )
+  },
+  {
+    title: 'Touranments',
+    path: '/touranments',
+    icon: (
+      <SvgIcon fontSize="small">
+        <PuzzlePieceIcon />
+      </SvgIcon>
+    )
+  },
+  {
     title: 'Account',
     path: '/account',
     icon: (
@@ -47,7 +68,7 @@ export const items = [
   },
   {
     title: 'Settings',
-    path: '/settings',
+     path: '/settings',
     icon: (
       <SvgIcon fontSize="small">
         <CogIcon />
