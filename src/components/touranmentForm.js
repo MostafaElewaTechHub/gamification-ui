@@ -49,7 +49,7 @@ export default function TouranmentForm() {
   const [startTime, setStartTime] = useState(Math.floor(new Date().getTime() / 1000));
   const [governorate, setGovernorate] = useState("Giza");
   const [endTime, setEndTime] = useState(0);
-  const [fields, setFields] = useState({"tuornament-type":"True & False"});
+  const [fields, setFields] = useState({ "tuornament-type": "True & False" });
   const [theme, setTheme] = useState();
   const [q1, setQ1] = useState("");
   const [a1, setA1] = useState(true);
@@ -59,15 +59,15 @@ export default function TouranmentForm() {
   const [a3, setA3] = useState(true);
   const [q4, setQ4] = useState("");
   const [a4, setA4] = useState(true);
-  
+
   const [file1, setFile1] = useState();
   const [file2, setFile2] = useState();
   const [file3, setFile3] = useState();
   const [file4, setFile4] = useState();
 
-  const arrSetsQues = [setQ1,setQ2,setQ3,setQ4];
-  const arrSetsAns = [setA1,setA2,setA3,setA4];
-  const arrSetsFiles = [setFile1,setFile2,setFile3,setFile4];
+  const arrSetsQues = [setQ1, setQ2, setQ3, setQ4];
+  const arrSetsAns = [setA1, setA2, setA3, setA4];
+  const arrSetsFiles = [setFile1, setFile2, setFile3, setFile4];
 
   //   const navigate = useNavigate();
   let handleSubmit = async (e) => {
@@ -132,7 +132,7 @@ export default function TouranmentForm() {
     }
   };
 
-console.log(q1,a1);
+  console.log(q1, a1);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -148,7 +148,7 @@ console.log(q1,a1);
             }}
           ></TextField>
         </Grid>
-        
+
         <Grid item xs={12} sm={6}>
           <TextField
             id="outlined-number"
@@ -212,11 +212,6 @@ console.log(q1,a1);
             <FormLabel>Touranment Government</FormLabel>
             <SelectMenu setValue={setGovernorate} type="govern" />
           </Grid>
-          <Grid alignSelf={"center"} alignItems={"center"} justifyContent={"right"}>
-            <Button variant="contained" type="submit" size="large">
-              Submit
-            </Button>
-          </Grid>
         </Grid>
 
         <Grid item xs={12} sm={6}>
@@ -230,10 +225,15 @@ console.log(q1,a1);
 
         <Grid item xs={12} sm={6}>
           <FormLabel>Touranment Theme</FormLabel>
-          <ThemeSelectMenu util={setFields} setValue={setTheme}/>
+          <ThemeSelectMenu util={setFields} setValue={setTheme} />
         </Grid>
         <Grid item xs={12} sm={12}>
-            <QuizForm setQues={arrSetsQues} setAns={arrSetsAns} setFiles={arrSetsFiles} tourType={fields}/>
+          <QuizForm
+            setQues={arrSetsQues}
+            setAns={arrSetsAns}
+            setFiles={arrSetsFiles}
+            tourType={fields}
+          />
         </Grid>
 
         <Grid alignSelf={"center"} alignItems={"center"} justifyContent={"right"}>
@@ -241,8 +241,8 @@ console.log(q1,a1);
             Submit
           </Button>
         </Grid>
-      </form>
+      </Grid>
       <h1 style={{ "text-align": "center" }}>{message}</h1>
-    </Container>
+    </form>
   );
 }
