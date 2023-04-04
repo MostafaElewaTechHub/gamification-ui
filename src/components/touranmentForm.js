@@ -4,17 +4,13 @@ import Button from "@mui/material/Button";
 import { FormLabel } from "@mui/material";
 import LabeledValuesSlider from "src/components/formSlider";
 import SelectMenu from "src/components/dropDownMenu";
+import ThemeSelectMenu from "src/components/themeDropDownMenu";
 import { Box } from "@mui/system";
 import { Grid } from "@mui/material";
 import { useState } from "react";
 import axios from "axios";
+import QuizForm from "./quizCreation";
 const baseURL = "http://localhost:5000/api/v1/tournament";
-
-const handleSubmit = (event) => {
-  event.preventDefault();
-  // console.log(event);
-  alert("Form Submitted");
-};
 
 export default function TouranmentForm() {
   const keyvalue = {
@@ -42,31 +38,25 @@ export default function TouranmentForm() {
   const [startTime, setStartTime] = useState(Math.floor(new Date().getTime() / 1000));
   const [governorate, setGovernorate] = useState("Giza");
   const [endTime, setEndTime] = useState(0);
-  
+  const [fields, setFields] = useState({"tuornament-type":"True & False"});
+  const [theme, setTheme] = useState();
   const [q1, setQ1] = useState("");
-  const [a1, setA1] = useState("");
+  const [a1, setA1] = useState(true);
   const [q2, setQ2] = useState("");
-  const [a2, setA2] = useState("");
+  const [a2, setA2] = useState(true);
   const [q3, setQ3] = useState("");
-  const [a3, setA3] = useState("");
+  const [a3, setA3] = useState(true);
   const [q4, setQ4] = useState("");
-  const [a4, setA4] = useState("");
+  const [a4, setA4] = useState(true);
+  
   const [file1, setFile1] = useState();
   const [file2, setFile2] = useState();
   const [file3, setFile3] = useState();
   const [file4, setFile4] = useState();
-  const [fields, setFields] = useState({});
-  const [theme, setTheme] = useState();
-  function handleChange(event) {
-    console.log(event.target.value)
-    console.log(fields)
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-    
-    setFields({...fields, [name]: value})
-    console.log(fields['revenueGenerated'])
-}
+
+  const arrSetsQues = [setQ1,setQ2,setQ3,setQ4];
+  const arrSetsAns = [setA1,setA2,setA3,setA4];
+  const arrSetsFiles = [setFile1,setFile2,setFile3,setFile4];
 
   //   const navigate = useNavigate();
   let handleSubmit = async (e) => {
@@ -132,11 +122,14 @@ export default function TouranmentForm() {
       console.log(err);
     }
   };
+
+console.log(q1,a1);
+
   return (
     <form onSubmit={handleSubmit}>
       <h2>Create Tournament</h2>
       <Grid container direction="row" justifyContent="center" alignItems="center" spacing={4}>
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={6}>
           <TextField
             label="Touranment Title"
             size="medium"
@@ -146,17 +139,8 @@ export default function TouranmentForm() {
             }}
           ></TextField>
         </Grid>
-        <Grid item xs={12} sm={4}>
-          <TextField
-            label="Touranment Theme"
-            size="medium"
-            onChange={(e) => console.log(e.target.value)}
-            InputLabelProps={{
-              shrink: true,
-            }}
-          ></TextField>
-        </Grid>
-        <Grid item xs={12} sm={4}>
+        
+        <Grid item xs={12} sm={6}>
           <TextField
             id="outlined-number"
             label="Touranment Max Size"
@@ -183,7 +167,7 @@ export default function TouranmentForm() {
             }}
           ></TextField>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={3}>
           <TextField
             type="datetime-local"
             size="medium"
@@ -194,7 +178,7 @@ export default function TouranmentForm() {
             }}
           ></TextField>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={3}>
           <TextField
             type="datetime-local"
             size="medium"
@@ -222,95 +206,15 @@ export default function TouranmentForm() {
           <FormLabel>Touranment Government</FormLabel>
           <SelectMenu setValue={setGovernorate} type="govern" />
         </Grid>
-        <Grid item xs={24} sm={12}>
-          <FormLabel>Theme</FormLabel>
-          <select type="select" as="select" placeholder="Theme" 
-            name="tuornament-type" onChange={ e=> { handleChange(e);setTheme(e.target.value) } } 
-            value={fields["tuornament-type"]}>
-            <option value="true_false"> True and False </option>
-            <option value="points"> Points </option>
-            <option value="mcq"> MCQ </option>
-          </select>
+
+        <Grid item xs={12} sm={6}>
+          <FormLabel>Touranment Theme</FormLabel>
+          <ThemeSelectMenu util={setFields} setValue={setTheme}/>
         </Grid>
-        
-        {
-          fields['tuornament-type'] === 'true_false' ?
-            <>
-          
-              
-              <Grid item xs={24} sm={12}>
-                <FormLabel>Question</FormLabel>
-                <Form.Control type="text" placeholder="question" onChange={(e) => setQ1(e.target.value)}/>
+        <Grid item xs={12} sm={12}>
+            <QuizForm setQues={arrSetsQues} setAns={arrSetsAns} setFiles={arrSetsFiles} tourType={fields}/>
+        </Grid>
 
-                <input type="file" onChange={ (e)=> setFile1(e.target.files[0].name) } />
-
-                <FormLabel>Answer</FormLabel>
-                <select name="revenueGenerated"
-                  onChange={e => setA1(e.target.value)}
-                  value={fields["revenueGenerated"]}>
-
-                  <option value="true">True</option>
-                  <option value="false">False</option>
-                </select>
-              </Grid>
-            
-          
-
-              <Grid item xs={24} sm={12}>
-                <FormLabel>Question</FormLabel>
-                <Form.Control type="text" placeholder="question" onChange={(e) => setQ2(e.target.value)}/>
-
-                <input type="file" onChange={ (e)=> setFile2(e.target.files[0].name) } />
-    
-                <FormLabel>Answer</FormLabel>
-                <select name="revenueGenerated"
-                  onChange={e => setA2(e.target.value)}
-                  value={fields["revenueGenerated"]}>
-
-                  <option value="true">True</option>
-                  <option value="false">False</option>
-                </select>
-              </Grid>
-            
-          
-
-              <Grid item xs={24} sm={12}>
-                <FormLabel>Question</FormLabel>
-                <Form.Control type="text" placeholder="question" onChange={(e) => setQ3(e.target.value)}/>
-
-                <input type="file" onChange={ (e)=> setFile3(e.target.files[0].name) } />
-
-                <FormLabel>Answer</FormLabel>
-                <select name="revenueGenerated"
-                  onChange={e => setA3(e.target.value)}
-                  value={fields["revenueGenerated"]}>
-
-                  <option value="true">True</option>
-                  <option value="false">False</option>
-                </select>
-              </Grid>
-            
-          
-
-              <Grid item xs={24} sm={12}>
-                <FormLabel>Question</FormLabel>
-                <Form.Control type="text" placeholder="question" onChange={(e) => setQ4(e.target.value)}/>
-
-                <input type="file" onChange={ (e)=> setFile4(e.target.files[0].name) } />
-    
-                <FormLabel>Answer</FormLabel>
-                <select name="revenueGenerated"
-                  onChange={e => setA4(e.target.value)}
-                  value={fields["revenueGenerated"]}>
-
-                  <option value="true">True</option>
-                  <option value="false">False</option>
-                </select>
-              </Grid>
-
-              </>
-         :null
-        }
         <Grid alignSelf={"center"} alignItems={"center"} justifyContent={"right"}>
           <Button variant="contained" type="submit" size="large">
             Submit
