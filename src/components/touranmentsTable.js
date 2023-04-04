@@ -8,8 +8,11 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export default function BasicTable({ objects, tournments }) {
+  const router = useRouter();
+
   const keys = Object.keys(objects);
   return (
     <TableContainer component={Paper}>
