@@ -175,8 +175,9 @@ export default function SelectMenu(props) {
   }
   if (type === "theme") {
     data = ["True & False", "MCQ", "Points"];
-  }if (type === "T&F") {
-    data = ["True","False"];
+  }
+  if (type === "T&F") {
+    data = [{"true":"True"},{"false": "False"}];
   }
   return (
     <div>
@@ -190,7 +191,7 @@ export default function SelectMenu(props) {
           {data.map((x) => {
             const keys = Object.keys(x);
             let key = keys[0];
-            // console.log(key);
+            console.log(key);
             return (
               <StyledOption key={key} value={key}>
                 {x[key]}

@@ -13,7 +13,7 @@ import QuizForm from "./quizCreation";
 import Alert from "@mui/material/Alert";
 import { useRouter } from "next/navigation";
 
-const baseURL = "http://localhost:5000/api/v1/tournament";
+const baseURL = "http://localhost:5000/api/v1/createCompetitionTrueFalse/";
 
 export default function TouranmentForm() {
   const keyvalue = {
@@ -51,6 +51,8 @@ export default function TouranmentForm() {
   const [endTime, setEndTime] = useState(0);
   const [fields, setFields] = useState({ "tuornament-type": "True & False" });
   const [theme, setTheme] = useState();
+  const [filter, setFilter] = useState();
+
   const [q1, setQ1] = useState("");
   const [a1, setA1] = useState(true);
   const [q2, setQ2] = useState("");
@@ -72,49 +74,59 @@ export default function TouranmentForm() {
   //   const navigate = useNavigate();
   let handleSubmit = async (e) => {
     e.preventDefault();
+    const token = localStorage.getItem("jwt");
+
     try {
-      let res = await axios.post(baseURL, {
-        notification: {
-          subject: "New tournment",
-          content: {
-            message: "you have been added to a new tournment",
+      let res = await axios.post(
+        baseURL,
+        {
+          notification: {
+            subject: "New tournment",
+            content: {
+              message: "you have been added to a new tournment",
+            },
+            code: 101,
+            persistent: true,
           },
-          code: 101,
-          persistent: true,
-        },
-        users: [],
-        filter: {
-          location: governorate,
-        },
-        tournament: {
-          authoritative: false,
-          sortOrder,
-          operator,
-          duration: 360000,
-          resetSchedule: "0,50 0,59 0,3 ? * * *",
-          metadata: {
-            weatherConditions: "rain",
+          users: [],
+          filter: {
+            location: governorate,
           },
-          title,
-          description,
-          category: 0,
-          startTime: 1648622837,
-          endTime: 0,
-          maxSize,
-          maxNumScore: 2,
-          joinRequired: true,
-        },
-        objects: [
-          {
-            collection: theme,
-            key: "",
-            value: `{"questions": [{"question": "${q1}","answer": ${a1},"image":"${keyvalue[file1]}"},{"question": "${q2}","answer": ${a2} ,"image":"${keyvalue[file2]}"},{"question": "${q3}","answer": ${a3} ,"image":"${keyvalue[file3]}"},{"question": "${q4}","answer": ${a4} ,"image":"${keyvalue[file4]}"}]}`,
-            version: null,
-            permissionWrite: 1,
-            permissionRead: 2,
+          tournament: {
+            authoritative: false,
+            sortOrder,
+            operator,
+            duration: 360000,
+            resetSchedule: "0,50 0,59 0,3 ? * * *",
+            metadata: {
+              weatherConditions: "rain",
+            },
+            title,
+            description,
+            category: 0,
+            startTime: 1648622837,
+            endTime: 0,
+            maxSize,
+            maxNumScore: 2,
+            joinRequired: true,
           },
-        ],
-      });
+          objects: [
+            {
+              collection: theme,
+              key: "",
+              value: `{"questions": [{"question": "${q1}","answer": ${a1},"image":"${keyvalue[file1]}"},{"question": "${q2}","answer": ${a2} ,"image":"${keyvalue[file2]}"},{"question": "${q3}","answer": ${a3} ,"image":"${keyvalue[file3]}"},{"question": "${q4}","answer": ${a4} ,"image":"${keyvalue[file4]}"}]}`,
+              version: null,
+              permissionWrite: 1,
+              permissionRead: 2,
+            },
+          ],
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       console.log(res);
       if (res.status === 200) {
         setMessage("Succefully created And you will be redirected within Two seconds");
@@ -203,20 +215,12 @@ export default function TouranmentForm() {
         </Grid>
         <Grid item xs={12} sm={6}>
           <FormLabel>Touranment Operator</FormLabel>
-
-          <Grid item xs={12} sm={6}>
-            <FormLabel>Touranment Filter</FormLabel>
-            <SelectMenu type="criteria" />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <FormLabel>Touranment Government</FormLabel>
-            <SelectMenu setValue={setGovernorate} type="govern" />
-          </Grid>
+          <SelectMenu setValue={setOperator} type="operator" />
         </Grid>
 
         <Grid item xs={12} sm={6}>
           <FormLabel>Touranment Filter</FormLabel>
-          <SelectMenu type="criteria" />
+          <SelectMenu setValue={setFilter} type="criteria" />
         </Grid>
         <Grid item xs={12} sm={6}>
           <FormLabel>Touranment Government</FormLabel>
