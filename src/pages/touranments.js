@@ -20,30 +20,25 @@ const keys = {
 };
 function Page({}) {
   const token = localStorage.getItem("jwt");
-  console.log(token);
   const [tournment, setTournment] = useState();
-  // const tournment = [1, 2];
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       const token = localStorage.getItem("jwt");
-      console.log(token);
-
       const response = await axios.get(baseURL, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       const data = response;
-      console.log("🚀 ~ file: touranments.js:48 ~ fetchData ~ data:", data.data);
       setTournment(data.data);
       setLoading(false);
 
       console.log(typeof data.data);
     };
     fetchData();
-  }, []);
+  }, [tournment]);
   console.log(tournment);
   return (
     <>

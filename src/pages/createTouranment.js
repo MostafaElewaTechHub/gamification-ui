@@ -59,10 +59,6 @@ function Page() {
       });
       console.log(res);
       if (res.status === 200) {
-        // console.log(res.data.token);
-        // localStorage.setItem("jwt", res.data.token);
-        // console.log(localStorage.getItem("jwt"));
-        // navigate("/tournments");
       } else {
         console.log(res);
         setMessage("Some error occured");
