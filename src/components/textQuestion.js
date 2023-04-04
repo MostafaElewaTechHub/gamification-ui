@@ -24,7 +24,7 @@ export default function QuizTextQuestion(props) {
           }}
         ></TextField>
 
-    {/*<input type="file" onChange={(e) => setFile1(e.target.files[0].name)} />*/}
+    <input type="file" onChange={(e) => props.setFiles(e.target.files[0].name)} />
 
         <FormLabel>Answer</FormLabel>
         <SelectMenu type="T&F" setValue={props.setAns}/>

@@ -49,7 +49,7 @@ export default function TouranmentForm() {
   const [startTime, setStartTime] = useState(Math.floor(new Date().getTime() / 1000));
   const [governorate, setGovernorate] = useState("Giza");
   const [endTime, setEndTime] = useState(0);
-  const [fields, setFields] = useState({ "tuornament-type": "True & False" });
+  const [fields, setFields] = useState({ "tuornament-type": "MCQ" });
   const [theme, setTheme] = useState();
   const [filter, setFilter] = useState();
 

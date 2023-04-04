@@ -167,7 +167,7 @@ export default function SelectMenu(props) {
         setFields({"tuornament-type":newValue});
     }
   };
-  let data = ["True & False", "MCQ", "Points"];
+  let data = ["true_false", "mcq", "points"];
 
   return (
     <div>
