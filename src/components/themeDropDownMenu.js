@@ -3,6 +3,7 @@ import SelectUnstyled, { selectUnstyledClasses } from "@mui/base/SelectUnstyled"
 import OptionUnstyled, { optionUnstyledClasses } from "@mui/base/OptionUnstyled";
 import PopperUnstyled from "@mui/base/PopperUnstyled";
 import { styled, Box } from "@mui/system";
+import { useState } from "react";
 
 const blue = {
   100: "#DAECFF",
@@ -150,34 +151,24 @@ const CustomSelect = React.forwardRef(function CustomSelect(props, ref) {
 });
 
 export default function SelectMenu(props) {
+
   const type = props.type;
+
   const setValue = props.setValue;
-  // console.log(props);
+  
+  const setFields = props.util;
+
   const handleChange = (event, newValue) => {
     if (event) {
       console.log("🚀 ~ file: dropDownMenu.js:157 ~ handleChange ~ newValue:", newValue);
       setValue(newValue);
+      
+      const value = newValue;
+        setFields({"tuornament-type":newValue});
     }
   };
-  let data = null;
-  // console.log(props);
-  if (type == "sort") {
-    data = [{ ascending: "Ascending" }, { descending: "Descending" }];
-  }
-  if (type === "operator") {
-    data = [{ best: "Best" }, { set: "Set" }, { increment: "Incrementally" }];
-  }
-  if (type === "criteria") {
-    data = [{ location: "Location" }, { age: "Age" }, { height: "Height" }];
-  }
-  if (type === "govern") {
-    data = [{ Giza: "Giza" }, { Cairo: "Cairo" }, { Ismailia: "Ismailia" }];
-  }
-  if (type === "theme") {
-    data = ["True & False", "MCQ", "Points"];
-  }if (type === "T&F") {
-    data = ["True","False"];
-  }
+  let data = ["True & False", "MCQ", "Points"];
+
   return (
     <div>
       <Box>
@@ -187,13 +178,11 @@ export default function SelectMenu(props) {
           name="demo-select"
           onChange={handleChange}
         >
-          {data.map((x) => {
-            const keys = Object.keys(x);
-            let key = keys[0];
-            // console.log(key);
+          {data.map((x, index) => {
+            // console.log(x);
             return (
-              <StyledOption key={key} value={key}>
-                {x[key]}
+              <StyledOption key={x} value={x} index={index}>
+                {x}
               </StyledOption>
             );
           })}
