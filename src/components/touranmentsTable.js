@@ -6,11 +6,11 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Button } from "react-bootstrap";
+import Button from "@mui/material/Button";
+import axios from "axios";
 
 export default function BasicTable({ objects, tournments }) {
   const keys = Object.keys(objects);
-  console.log(keys);
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -36,8 +36,24 @@ export default function BasicTable({ objects, tournments }) {
                 );
               })}
               <TableCell>
-                <Button size="sm" variant="info" className="button">
+                <Button variant="contained" color="success" size="small">
                   Show More
+                </Button>
+              </TableCell>
+              <TableCell>
+                <Button
+                  onClick={(e) => {
+                    axios.delete("http://localhost:5000/api/v1/tournament", {
+                      params: {
+                        tournamentId: tournment.id,
+                      },
+                    });
+                  }}
+                  variant="contained"
+                  color="error"
+                  size="small"
+                >
+                  Delete
                 </Button>
               </TableCell>
             </TableRow>

@@ -155,23 +155,23 @@ export default function SelectMenu(props) {
   // console.log(props);
   const handleChange = (event, newValue) => {
     if (event) {
-      console.log("🚀 ~ file: dropDownMenu.js:157 ~ handleChange ~ newValue:", newValue);
-      setValue(event.target.value);
+      // console.log("🚀 ~ file: dropDownMenu.js:157 ~ handleChange ~ newValue:", newValue);
+      setValue(newValue);
     }
   };
   let data = null;
   // console.log(props);
   if (type == "sort") {
-    data = ["Ascending", "Descending"];
+    data = [{ ascending: "Ascending" }, { descending: "Descending" }];
   }
   if (type === "operator") {
-    data = ["Best", "Set", "Incrementally"];
+    data = [{ best: "Best" }, { set: "Set" }, { increment: "Incrementally" }];
   }
   if (type === "criteria") {
-    data = ["Location", "Age", "Height"];
+    data = [{ location: "Location" }, { age: "Age" }, { height: "Height" }];
   }
   if (type === "govern") {
-    data = ["Giza", "Cairo", "Ismailia"];
+    data = [{ Giza: "Giza" }, { Cairo: "Cairo" }, { Ismailia: "Ismailia" }];
   }
   return (
     <div>
@@ -182,11 +182,13 @@ export default function SelectMenu(props) {
           name="demo-select"
           onChange={handleChange}
         >
-          {data.map((x, index) => {
-            // console.log(x);
+          {data.map((x) => {
+            const keys = Object.keys(x);
+            let key = keys[0];
+            // console.log(key);
             return (
-              <StyledOption key={x} test="try" value={x} index={index}>
-                {x}
+              <StyledOption key={key} value={key}>
+                {x[key]}
               </StyledOption>
             );
           })}
