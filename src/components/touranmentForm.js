@@ -12,12 +12,12 @@ const baseURL = "http://localhost:5000/api/v1/tournament";
 
 const handleSubmit = (event) => {
   event.preventDefault();
-  console.log(event);
+  // console.log(event);
   alert("Form Submitted");
 };
 
 export default function TouranmentForm() {
-  console.log(new Date().getTime());
+  // console.log(new Date().getTime());
   const [title, setTitle] = useState("");
   const [description, setDescrption] = useState("");
 
@@ -26,7 +26,6 @@ export default function TouranmentForm() {
   const [subject, setSubject] = useState("");
   const [sortOrder, setSortOrder] = useState("ascending");
   const [operator, setOperator] = useState("best");
-  console.log("🚀 ~ file: touranmentForm.js:29 ~ TouranmentForm ~ operator:", operator);
   const [maxSize, setMaxSize] = useState("");
   const [startTime, setStartTime] = useState(Math.floor(new Date().getTime() / 1000));
   const [governorate, setGovernorate] = useState("Giza");
@@ -34,8 +33,8 @@ export default function TouranmentForm() {
 
   //   const navigate = useNavigate();
   let handleSubmit = async (e) => {
-    console.log("🚀 ~ file: touranmentForm.js:22 ~ TouranmentForm ~ title:", title);
-    console.log("🚀 ~ file: touranmentForm.js:23 ~ TouranmentForm ~ description:", description);
+    // console.log("🚀 ~ file: touranmentForm.js:22 ~ TouranmentForm ~ title:", title);
+    // console.log("🚀 ~ file: touranmentForm.js:23 ~ TouranmentForm ~ description:", description);
     console.log("🚀 ~ file: touranmentForm.js:29 ~ TouranmentForm ~ operator:", operator);
 
     e.preventDefault();
@@ -55,7 +54,7 @@ export default function TouranmentForm() {
         },
         tournament: {
           authoritative: false,
-          sortOrder,
+          sortOrder: "ascending",
           operator,
           duration: 360000,
           resetSchedule: "0,50 0,59 0,3 ? * * *",
@@ -78,6 +77,7 @@ export default function TouranmentForm() {
         // localStorage.setItem("jwt", res.data.token);
         // console.log(localStorage.getItem("jwt"));
         // navigate("/tournments");
+        console.log("created");
       } else {
         console.log(res);
         setMessage("Some error occured");
@@ -159,13 +159,13 @@ export default function TouranmentForm() {
           ></TextField>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <FormLabel onChange={(e) => setSortOrder(e.target.value)}>Touranment Sort Type</FormLabel>
-          <SelectMenu type="sort" />
+          <FormLabel>Touranment Sort Type</FormLabel>
+          <SelectMenu setValue={setSortOrder} type="sort" />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <FormLabel onChange={(e) => console.log(e.target.value)}>Touranment Operator</FormLabel>
+          <FormLabel>Touranment Operator</FormLabel>
 
-          <SelectMenu setoperator={setOperator} type="operator" />
+          <SelectMenu setValue={setOperator} type="operator" />
         </Grid>
 
         <Grid item xs={12} sm={6}>
@@ -174,7 +174,7 @@ export default function TouranmentForm() {
         </Grid>
         <Grid item xs={12} sm={6}>
           <FormLabel>Touranment Government</FormLabel>
-          <SelectMenu type="govern" />
+          <SelectMenu setValue={setGovernorate} type="govern" />
         </Grid>
         <Grid alignSelf={"center"} alignItems={"center"} justifyContent={"right"}>
           <Button variant="contained" type="submit" size="large">

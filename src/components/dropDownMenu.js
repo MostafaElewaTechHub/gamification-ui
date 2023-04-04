@@ -151,15 +151,12 @@ const CustomSelect = React.forwardRef(function CustomSelect(props, ref) {
 
 export default function SelectMenu(props) {
   const type = props.type;
-  const setoperator = props.setoperator;
+  const setValue = props.setValue;
   // console.log(props);
-  const handleChange = (event) => {
+  const handleChange = (event, newValue) => {
     if (event) {
-      console.log(
-        "🚀 ~ file: dropDownMenu.js:160 ~ handleChange ~ event.target.value:",
-        event.target.value
-      );
-      setoperator(event.target.value);
+      console.log("🚀 ~ file: dropDownMenu.js:157 ~ handleChange ~ newValue:", newValue);
+      setValue(event.target.value);
     }
   };
   let data = null;
@@ -185,10 +182,10 @@ export default function SelectMenu(props) {
           name="demo-select"
           onChange={handleChange}
         >
-          {data.map((x) => {
+          {data.map((x, index) => {
             // console.log(x);
             return (
-              <StyledOption test="try" key={x} value="hel yeah">
+              <StyledOption key={x} test="try" value={x} index={index}>
                 {x}
               </StyledOption>
             );
