@@ -27,7 +27,7 @@ const Page = () => {
   const [method, setMethod] = useState("email");
   const formik = useFormik({
     initialValues: {
-      email: "demo@devias.io",
+      email: "mostafa@example.com",
       password: "Password123!",
       submit: null,
     },
@@ -52,7 +52,7 @@ const Page = () => {
         );
         localStorage.setItem("jwt", res.data.token);
         console.log(res.data.token);
-
+        auth.skip();
         router.push("/");
       } catch (err) {
         helpers.setStatus({ success: false });
@@ -66,10 +66,10 @@ const Page = () => {
     setMethod(value);
   }, []);
 
-  const handleSkip = useCallback(() => {
-    auth.skip();
-    router.push("/");
-  }, [auth, router]);
+  // const handleSkip = useCallback(() => {
+  //   auth.skip();
+  //   router.push("/");
+  // }, [auth, router]);
 
   return (
     <>
@@ -147,9 +147,9 @@ const Page = () => {
                 <Button fullWidth size="large" sx={{ mt: 3 }} type="submit" variant="contained">
                   Continue
                 </Button>
-                <Button fullWidth size="large" sx={{ mt: 3 }} onClick={handleSkip}>
+                {/* <Button fullWidth size="large" sx={{ mt: 3 }} onClick={handleSkip}>
                   Skip authentication
-                </Button>
+                </Button> */}
                 {/* <Alert color="primary" severity="info" sx={{ mt: 3 }}>
                   <div>
                     You can use <b>demo@devias.io</b> and password <b>Password123!</b>
