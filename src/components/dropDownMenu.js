@@ -151,27 +151,48 @@ const CustomSelect = React.forwardRef(function CustomSelect(props, ref) {
 
 export default function SelectMenu(props) {
   const type = props.type;
+  const setoperator = props.setoperator;
+  // console.log(props);
+  const handleChange = (event) => {
+    if (event) {
+      console.log(
+        "🚀 ~ file: dropDownMenu.js:160 ~ handleChange ~ event.target.value:",
+        event.target.value
+      );
+      setoperator(event.target.value);
+    }
+  };
   let data = null;
-  console.log(props);
+  // console.log(props);
   if (type == "sort") {
-    data = ["Ascending","Descending"]
-  } 
-  if (type === "operator"){
-    data = ["Best","Set","Incrementally"]
+    data = ["Ascending", "Descending"];
   }
-  if (type === "criteria"){
-    data = ["Location","Age","Height"]
+  if (type === "operator") {
+    data = ["Best", "Set", "Incrementally"];
   }
-  if (type === "govern"){
-    data = ["Giza","Cairo","Ismailia"]
+  if (type === "criteria") {
+    data = ["Location", "Age", "Height"];
+  }
+  if (type === "govern") {
+    data = ["Giza", "Cairo", "Ismailia"];
   }
   return (
     <div>
       <Box>
-        <CustomSelect defaultValue={"None"} id="named-select" name="demo-select">
-          {
-            data.map((x) => (<StyledOption value={x}>{x}</StyledOption>))
-          }
+        <CustomSelect
+          defaultValue={"None"}
+          id="named-select"
+          name="demo-select"
+          onChange={handleChange}
+        >
+          {data.map((x) => {
+            // console.log(x);
+            return (
+              <StyledOption test="try" key={x} value="hel yeah">
+                {x}
+              </StyledOption>
+            );
+          })}
         </CustomSelect>
       </Box>
     </div>
