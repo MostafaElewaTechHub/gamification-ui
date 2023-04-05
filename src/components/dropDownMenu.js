@@ -174,7 +174,7 @@ export default function SelectMenu(props) {
     data = [{ Giza: "Giza" }, { Cairo: "Cairo" }, { Ismailia: "Ismailia" }];
   }
   if (type === "theme") {
-    data = ["True & False", "MCQ", "Points"];
+    data = ["true_false", "mcq", "points"];
   }
   if (type === "T&F") {
     data = [{"true":"True"},{"false": "False"}];

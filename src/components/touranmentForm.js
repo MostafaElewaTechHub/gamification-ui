@@ -49,7 +49,7 @@ export default function TouranmentForm() {
   const [startTime, setStartTime] = useState(Math.floor(new Date().getTime() / 1000));
   const [governorate, setGovernorate] = useState("Giza");
   const [endTime, setEndTime] = useState(0);
-  const [fields, setFields] = useState({ "tuornament-type": "True & False" });
+  const [fields, setFields] = useState({ "tuornament-type": "MCQ" });
   const [theme, setTheme] = useState();
   const [filter, setFilter] = useState();
 
@@ -76,6 +76,23 @@ export default function TouranmentForm() {
     e.preventDefault();
     const token = localStorage.getItem("jwt");
 
+    let myvalue = `{"questions": [`;
+    let lst = [];
+    if (q1 && a1) {
+      lst.push(`{"question": "${q1}","answer": ${a1},"image":"${keyvalue[file1]}"}`)
+    }
+    if (q2 && a2) {
+      lst.push(`{"question": "${q2}","answer": ${a2},"image":"${keyvalue[file2]}"}`)
+    }
+    if (q3 && a3) {
+      lst.push(`{"question": "${q3}","answer": ${a3},"image":"${keyvalue[file3]}"}`)
+    }
+    if (q4 && a4) {
+      lst.push(`{"question": "${q4}","answer": ${a4},"image":"${keyvalue[file4]}"}`)
+    }
+    let v = lst.join(",")
+    myvalue += v;
+    myvalue += `]}`
     try {
       let res = await axios.post(
         baseURL,
@@ -114,7 +131,7 @@ export default function TouranmentForm() {
             {
               collection: theme,
               key: "",
-              value: `{"questions": [{"question": "${q1}","answer": ${a1},"image":"${keyvalue[file1]}"},{"question": "${q2}","answer": ${a2} ,"image":"${keyvalue[file2]}"},{"question": "${q3}","answer": ${a3} ,"image":"${keyvalue[file3]}"},{"question": "${q4}","answer": ${a4} ,"image":"${keyvalue[file4]}"}]}`,
+              value: myvalue,
               version: null,
               permissionWrite: 1,
               permissionRead: 2,
