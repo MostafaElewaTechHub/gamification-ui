@@ -44,7 +44,7 @@ function Page({}) {
     };
     fetchData();
   }, [tournment]);
-  console.log(tournment);
+  // console.log(tournment);
   return (
     <>
       <Head>

@@ -39,7 +39,17 @@ export default function BasicTable({ objects, tournments }) {
                 );
               })}
               <TableCell>
-                <Button variant="contained" color="success" size="small">
+                <Button
+                  onClick={() => {
+                    router.push({
+                      pathname: "/showMore",
+                      query: { id: tournment.id },
+                    });
+                  }}
+                  variant="contained"
+                  color="success"
+                  size="small"
+                >
                   Show More
                 </Button>
               </TableCell>
