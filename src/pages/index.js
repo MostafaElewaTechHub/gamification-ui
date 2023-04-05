@@ -28,18 +28,18 @@ const Page = () => (
       <Container maxWidth="xl">
         <Grid container spacing={3}>
           <Grid xs={12} sm={6} lg={3}>
-            <OverviewBudget difference={12} positive sx={{ height: "100%" }} value="$24k" />
+            <OverviewBudget difference={12} positive sx={{ height: "100%" }} value="20" />
           </Grid>
           <Grid xs={12} sm={6} lg={3}>
             <OverviewTotalCustomers
-              difference={16}
-              positive={false}
+              difference={20}
+              positive={true}
               sx={{ height: "100%" }}
-              value="1.6k"
+              value="16.6k"
             />
           </Grid>
           <Grid xs={12} sm={6} lg={3}>
-            <OverviewTasksProgress sx={{ height: "100%" }} value={75.5} />
+            <OverviewTasksProgress sx={{ height: "100%" }} value={60} />
           </Grid>
           <Grid xs={12} sm={6} lg={3}>
             <OverviewTotalProfit sx={{ height: "100%" }} value="$15k" />
@@ -62,7 +62,7 @@ const Page = () => (
           <Grid xs={12} md={6} lg={4}>
             <OverviewTraffic
               chartSeries={[63, 15, 22]}
-              labels={["Desktop", "Tablet", "Phone"]}
+              labels={["T/F", "MCQ", "Points"]}
               sx={{ height: "100%" }}
             />
           </Grid>
@@ -70,35 +70,40 @@ const Page = () => (
             <OverviewLatestProducts
               products={[
                 {
-                  id: "5ece2c077e39da27658aa8a9",
-                  image: "/assets/products/product-1.png",
-                  name: "Healthcare Erbology",
-                  updatedAt: subHours(now, 6).getTime(),
+                  id: '5e887ac47eed253091be10cb',
+                    city: 'Cleveland',
+                  avatar: '/assets/avatars/avatar-carson-darrin.png',
+                  email: 'carson.darrin@devias.io',
+                  name: 'Carson Darrin'
                 },
                 {
-                  id: "5ece2c0d16f70bff2cf86cd8",
-                  image: "/assets/products/product-2.png",
-                  name: "Makeup Lancome Rouge",
-                  updatedAt: subDays(subHours(now, 8), 2).getTime(),
+                  id: '5e887b7602bdbc4dbb234b27',
+                  city: 'North Canton',
+                  avatar: '/assets/avatars/avatar-jie-yan-song.png',
+                  email: 'jie.yan.song@devias.io',
+                  name: 'Jie Yan Song'
                 },
                 {
-                  id: "b393ce1b09c1254c3a92c827",
-                  image: "/assets/products/product-5.png",
-                  name: "Skincare Soja CO",
-                  updatedAt: subDays(subHours(now, 1), 1).getTime(),
+                  id: '5e86805e2bafd54f66cc95c3',
+                  city: 'San Diego',
+                  avatar: '/assets/avatars/avatar-miron-vitold.png',
+                  email: 'miron.vitold@devias.io',
+                  name: 'Miron Vitold'
                 },
                 {
-                  id: "a6ede15670da63f49f752c89",
-                  image: "/assets/products/product-6.png",
-                  name: "Makeup Lipstick",
-                  updatedAt: subDays(subHours(now, 3), 3).getTime(),
+                  id: '5e887d0b3d090c1b8f162003',
+                  city: 'Carson City',
+                  avatar: '/assets/avatars/avatar-omar-darboe.png',
+                  email: 'omar.darobe@devias.io',
+                  name: 'Omar Darobe'
                 },
                 {
-                  id: "bcad5524fe3a2f8f8620ceda",
-                  image: "/assets/products/product-7.png",
-                  name: "Healthcare Ritual",
-                  updatedAt: subDays(subHours(now, 5), 6).getTime(),
-                },
+                  id: '5e8877da9a65442b11551975',
+                  city: 'Murray',
+                  avatar: '/assets/avatars/avatar-iulia-albu.png',
+                  email: 'iulia.albu@devias.io',
+                  name: 'Iulia Albu'
+                }
               ]}
               sx={{ height: "100%" }}
             />
@@ -107,65 +112,40 @@ const Page = () => (
             <OverviewLatestOrders
               orders={[
                 {
-                  id: "f69f88012978187a6c12897f",
+                  id: "5ece2c077e39da27658aa8a9",
                   ref: "DEV1049",
-                  amount: 30.5,
-                  customer: {
-                    name: "Ekaterina Tankova",
-                  },
-                  createdAt: 1555016400000,
-                  status: "pending",
+                  name: "Healthcare Erbology",
+                  updatedAt: subHours(now, 6).getTime(),
+                  count: 50
                 },
                 {
-                  id: "9eaa1c7dd4433f413c308ce2",
+                  id: "5ece2c0d16f70bff2cf86cd8",
                   ref: "DEV1048",
-                  amount: 25.1,
-                  customer: {
-                    name: "Cao Yu",
-                  },
-                  createdAt: 1555016400000,
-                  status: "delivered",
+                  name: "Makeup Lancome Rouge",
+                  updatedAt: subDays(subHours(now, 8), 2).getTime(),
+                  count: 30
                 },
                 {
-                  id: "01a5230c811bd04996ce7c13",
+                  id: "b393ce1b09c1254c3a92c827",
                   ref: "DEV1047",
-                  amount: 10.99,
-                  customer: {
-                    name: "Alexa Richardson",
-                  },
-                  createdAt: 1554930000000,
-                  status: "refunded",
+                  name: "Skincare Soja CO",
+                  updatedAt: subDays(subHours(now, 1), 1).getTime(),
+                  count: 25
                 },
                 {
-                  id: "1f4e1bd0a87cea23cdb83d18",
+                  id: "a6ede15670da63f49f752c89",
                   ref: "DEV1046",
-                  amount: 96.43,
-                  customer: {
-                    name: "Anje Keizer",
-                  },
-                  createdAt: 1554757200000,
-                  status: "pending",
+                  name: "Makeup Lipstick",
+                  updatedAt: subDays(subHours(now, 3), 3).getTime(),
+                  count: 20
                 },
                 {
-                  id: "9f974f239d29ede969367103",
+                  id: "bcad5524fe3a2f8f8620ceda",
                   ref: "DEV1045",
-                  amount: 32.54,
-                  customer: {
-                    name: "Clarke Gillebert",
-                  },
-                  createdAt: 1554670800000,
-                  status: "delivered",
-                },
-                {
-                  id: "ffc83c1560ec2f66a1c05596",
-                  ref: "DEV1044",
-                  amount: 16.76,
-                  customer: {
-                    name: "Adam Denisov",
-                  },
-                  createdAt: 1554670800000,
-                  status: "delivered",
-                },
+                  name: "Healthcare Ritual",
+                  updatedAt: subDays(subHours(now, 5), 6).getTime(),
+                  count: 10
+                }
               ]}
               sx={{ height: "100%" }}
             />

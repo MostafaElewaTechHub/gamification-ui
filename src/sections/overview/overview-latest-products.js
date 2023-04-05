@@ -14,7 +14,8 @@ import {
   ListItem,
   ListItemAvatar,
   ListItemText,
-  SvgIcon
+  SvgIcon,
+  Avatar
 } from '@mui/material';
 
 export const OverviewLatestProducts = (props) => {
@@ -22,11 +23,10 @@ export const OverviewLatestProducts = (props) => {
 
   return (
     <Card sx={sx}>
-      <CardHeader title="Latest Products" />
+      <CardHeader title="Top Ranked" />
       <List>
         {products.map((product, index) => {
           const hasDivider = index < products.length - 1;
-          const ago = formatDistanceToNow(product.updatedAt);
 
           return (
             <ListItem
@@ -35,17 +35,10 @@ export const OverviewLatestProducts = (props) => {
             >
               <ListItemAvatar>
                 {
-                  product.image
+                  product.avatar
                     ? (
-                      <Box
-                        component="img"
-                        src={product.image}
-                        sx={{
-                          borderRadius: 1,
-                          height: 48,
-                          width: 48
-                        }}
-                      />
+                      <Avatar src={product.avatar}>
+                        </Avatar>
                     )
                     : (
                       <Box
@@ -62,7 +55,7 @@ export const OverviewLatestProducts = (props) => {
               <ListItemText
                 primary={product.name}
                 primaryTypographyProps={{ variant: 'subtitle1' }}
-                secondary={`Updated ${ago} ago`}
+                secondary={`city: ${product.city}`}
                 secondaryTypographyProps={{ variant: 'body2' }}
               />
               <IconButton edge="end">

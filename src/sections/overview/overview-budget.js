@@ -21,7 +21,7 @@ export const OverviewBudget = (props) => {
               color="text.secondary"
               variant="overline"
             >
-              Budget
+              Total Tournaments
             </Typography>
             <Typography variant="h4">
               {value}
@@ -34,9 +34,7 @@ export const OverviewBudget = (props) => {
               width: 56
             }}
           >
-            <SvgIcon>
-              <CurrencyDollarIcon />
-            </SvgIcon>
+            <img alt="" src="/assets/tournament.svg" />
           </Avatar>
         </Stack>
         {difference && (
@@ -61,7 +59,7 @@ export const OverviewBudget = (props) => {
                 color={positive ? 'success.main' : 'error.main'}
                 variant="body2"
               >
-                {difference}%
+                +{difference}
               </Typography>
             </Stack>
             <Typography
