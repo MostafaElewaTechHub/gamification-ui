@@ -12,7 +12,7 @@ import {
   Typography
 } from '@mui/material';
 
-export const OverviewTasksProgress = (props) => {
+export const Active = (props) => {
   const { value, sx } = props;
 
   return (
@@ -30,7 +30,7 @@ export const OverviewTasksProgress = (props) => {
               gutterBottom
               variant="overline"
             >
-              Active Users
+              Engagement Increase
             </Typography>
             <Typography variant="h4">
               {value}%
@@ -44,7 +44,7 @@ export const OverviewTasksProgress = (props) => {
             }}
           >
             <SvgIcon>
-              <UsersIcon />
+              <ArrowTrendingUpIcon />
             </SvgIcon>
           </Avatar>
         </Stack>
@@ -59,7 +59,7 @@ export const OverviewTasksProgress = (props) => {
   );
 };
 
-OverviewTasksProgress.propTypes = {
+Active.propTypes = {
   value: PropTypes.number.isRequired,
   sx: PropTypes.object
 };
