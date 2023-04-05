@@ -32,6 +32,8 @@ export default function TouranmentForm() {
     "8.jpg": "https://imagevars.gulfnews.com/2021/11/12/UAE-flag_17d13e15440_medium.jpg",
     "9.jpg":
       "https://t4.ftcdn.net/jpg/05/08/76/43/360_F_508764363_sCzUOxHSQJOAjc5n7o9pjYYX1r8GuRMV.jpg",
+      "12.png":"https://kharjhome1.com/wp-content/uploads/2022/04/2-4.png",
+      "13.jpg":"https://aawsat.com/sites/default/files/styles/400x230/public/2015/06/16/raminside_1.jpg?itok=0Yb2dJ8e"
   };
 
   console.log(new Date().getTime());
@@ -98,7 +100,7 @@ export default function TouranmentForm() {
         baseURL,
         {
           notification: {
-            subject: "New tournment",
+            subject: title,
             content: {
               message: "you have been added to a new tournment",
             },
@@ -124,7 +126,7 @@ export default function TouranmentForm() {
             startTime: 1648622837,
             endTime: 0,
             maxSize,
-            maxNumScore: 2,
+            maxNumScore: 1000,
             joinRequired: true,
           },
           objects: [
