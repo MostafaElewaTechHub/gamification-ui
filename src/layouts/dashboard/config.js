@@ -22,24 +22,6 @@ export const items = [
     ),
   },
   {
-    title: "Customers",
-    path: "/customers",
-    icon: (
-      <SvgIcon fontSize="small">
-        <UsersIcon />
-      </SvgIcon>
-    ),
-  },
-  {
-    title: "Companies",
-    path: "/companies",
-    icon: (
-      <SvgIcon fontSize="small">
-        <ShoppingBagIcon />
-      </SvgIcon>
-    ),
-  },
-  {
     title: "Create Touranment",
     path: "/createTouranment",
     icon: (
@@ -58,38 +40,11 @@ export const items = [
     ),
   },
   {
-    title: "Account",
-    path: "/account",
-    icon: (
-      <SvgIcon fontSize="small">
-        <UserIcon />
-      </SvgIcon>
-    ),
-  },
-  {
-    title: "Settings",
-    path: "/settings",
-    icon: (
-      <SvgIcon fontSize="small">
-        <CogIcon />
-      </SvgIcon>
-    ),
-  },
-  {
     title: "Login",
     path: "/auth/login",
     icon: (
       <SvgIcon fontSize="small">
         <LockClosedIcon />
-      </SvgIcon>
-    ),
-  },
-  {
-    title: "Register",
-    path: "/auth/register",
-    icon: (
-      <SvgIcon fontSize="small">
-        <UserPlusIcon />
       </SvgIcon>
     ),
   },
