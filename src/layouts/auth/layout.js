@@ -81,9 +81,9 @@ export const Layout = (props) => {
                 Gamification Platform
               </Box>
             </Typography>
-            <Typography align="center" sx={{ mb: 3 }} variant="subtitle1">
+            {/* <Typography align="center" sx={{ mb: 3 }} variant="subtitle1">
               A professional kit that comes with ready-to-use MUI components.
-            </Typography>
+            </Typography> */}
             <img alt="" src="/assets/auth-illustration.svg" />
           </Box>
         </Grid>
