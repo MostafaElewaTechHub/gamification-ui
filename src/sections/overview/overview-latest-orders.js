@@ -29,23 +29,17 @@ export const OverviewLatestOrders = (props) => {
 
   return (
     <Card sx={sx}>
-      <CardHeader title="Latest Orders" />
+      <CardHeader title="Max # Users / Tournament" />
       <Scrollbar sx={{ flexGrow: 1 }}>
-        <Box sx={{ minWidth: 800 }}>
+        <Box sx={{ minWidth: 500 }}>
           <Table>
             <TableHead>
               <TableRow>
                 <TableCell>
-                  ID
-                </TableCell>
-                <TableCell>
                   Name
                 </TableCell>
                 <TableCell sortDirection="asc">
-                  # of Orders
-                </TableCell>
-                <TableCell>
-                  Updated - ago
+                  # of users
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -59,16 +53,10 @@ export const OverviewLatestOrders = (props) => {
                     key={order.id}
                   >
                     <TableCell>
-                      {order.ref}
-                    </TableCell>
-                    <TableCell>
                       {order.name}
                     </TableCell>
                     <TableCell>
                       {order.count}
-                    </TableCell>
-                    <TableCell>
-                      {ago}
                     </TableCell>
                   </TableRow>
                 );
