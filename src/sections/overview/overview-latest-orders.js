@@ -1,4 +1,4 @@
-import { format } from 'date-fns';
+import { formatDistanceToNow } from 'date-fns';
 import PropTypes from 'prop-types';
 import ArrowRightIcon from '@heroicons/react/24/solid/ArrowRightIcon';
 import {
@@ -36,22 +36,22 @@ export const OverviewLatestOrders = (props) => {
             <TableHead>
               <TableRow>
                 <TableCell>
-                  Order
+                  ID
                 </TableCell>
                 <TableCell>
-                  Customer
+                  Name
                 </TableCell>
-                <TableCell sortDirection="desc">
-                  Date
+                <TableCell sortDirection="asc">
+                  # of Orders
                 </TableCell>
                 <TableCell>
-                  Status
+                  Updated - ago
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {orders.map((order) => {
-                const createdAt = format(order.createdAt, 'dd/MM/yyyy');
+                const ago = formatDistanceToNow(order.updatedAt);
 
                 return (
                   <TableRow
@@ -62,15 +62,13 @@ export const OverviewLatestOrders = (props) => {
                       {order.ref}
                     </TableCell>
                     <TableCell>
-                      {order.customer.name}
+                      {order.name}
                     </TableCell>
                     <TableCell>
-                      {createdAt}
+                      {order.count}
                     </TableCell>
                     <TableCell>
-                      <SeverityPill color={statusMap[order.status]}>
-                        {order.status}
-                      </SeverityPill>
+                      {ago}
                     </TableCell>
                   </TableRow>
                 );

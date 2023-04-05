@@ -21,7 +21,7 @@ export const OverviewTotalCustomers = (props) => {
               color="text.secondary"
               variant="overline"
             >
-              Total Customers
+              Total Users
             </Typography>
             <Typography variant="h4">
               {value}
@@ -29,7 +29,7 @@ export const OverviewTotalCustomers = (props) => {
           </Stack>
           <Avatar
             sx={{
-              backgroundColor: 'success.main',
+              backgroundColor: 'warning.main',
               height: 56,
               width: 56
             }}
