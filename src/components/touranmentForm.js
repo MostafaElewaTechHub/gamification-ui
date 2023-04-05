@@ -32,8 +32,9 @@ export default function TouranmentForm() {
     "8.jpg": "https://imagevars.gulfnews.com/2021/11/12/UAE-flag_17d13e15440_medium.jpg",
     "9.jpg":
       "https://t4.ftcdn.net/jpg/05/08/76/43/360_F_508764363_sCzUOxHSQJOAjc5n7o9pjYYX1r8GuRMV.jpg",
-      "12.png":"https://kharjhome1.com/wp-content/uploads/2022/04/2-4.png",
-      "13.jpg":"https://aawsat.com/sites/default/files/styles/400x230/public/2015/06/16/raminside_1.jpg?itok=0Yb2dJ8e"
+    "12.png": "https://kharjhome1.com/wp-content/uploads/2022/04/2-4.png",
+    "13.jpg":
+      "https://aawsat.com/sites/default/files/styles/400x230/public/2015/06/16/raminside_1.jpg?itok=0Yb2dJ8e",
   };
 
   console.log(new Date().getTime());
@@ -171,7 +172,7 @@ export default function TouranmentForm() {
       <Grid container direction="row" justifyContent="center" alignItems="center" spacing={4}>
         <Grid item xs={12} sm={6}>
           <TextField
-            label="Touranment Title"
+            label=" Title"
             size="medium"
             onChange={(e) => setTitle(e.target.value)}
             InputLabelProps={{
@@ -183,7 +184,7 @@ export default function TouranmentForm() {
         <Grid item xs={12} sm={6}>
           <TextField
             id="outlined-number"
-            label="Touranment Max Size"
+            label=" Max Size"
             defaultValue={0}
             size="medium"
             type="number"
@@ -196,7 +197,7 @@ export default function TouranmentForm() {
         <Grid item xs={12} sm={12}>
           <TextField
             id="outlined-multiline-static"
-            label="Touranment Description"
+            label=" Description"
             size="medium"
             onChange={(e) => setDescrption(e.target.value)}
             multiline
@@ -211,7 +212,7 @@ export default function TouranmentForm() {
           <TextField
             type="datetime-local"
             size="medium"
-            label="Touranment Start Time"
+            label=" Start Time"
             onChange={(e) => {
               console.log(new Date(e.target.value).getTime() / 1000);
               setStartTime(Math.floor(new Date(e.target.value).getTime() / 1000));
@@ -225,32 +226,32 @@ export default function TouranmentForm() {
           <TextField
             type="datetime-local"
             size="medium"
-            label="Touranment End Time"
+            label=" End Time"
             InputLabelProps={{
               shrink: true,
             }}
           ></TextField>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <FormLabel>Touranment Sort Type</FormLabel>
+          <FormLabel> Sort Type</FormLabel>
           <SelectMenu setValue={setSortOrder} type="sort" />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <FormLabel>Touranment Operator</FormLabel>
+          <FormLabel> Operator</FormLabel>
           <SelectMenu setValue={setOperator} type="operator" />
         </Grid>
 
         <Grid item xs={12} sm={6}>
-          <FormLabel>Touranment Filter</FormLabel>
+          <FormLabel> Filter</FormLabel>
           <SelectMenu setValue={setFilter} type="criteria" />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <FormLabel>Touranment Government</FormLabel>
+          <FormLabel> Government</FormLabel>
           <SelectMenu setValue={setGovernorate} type="govern" />
         </Grid>
 
         <Grid item xs={12} sm={6}>
-          <FormLabel>Touranment Theme</FormLabel>
+          <FormLabel> Theme</FormLabel>
           <ThemeSelectMenu util={setFields} setValue={setTheme} />
         </Grid>
         <Grid item xs={12} sm={12}>
