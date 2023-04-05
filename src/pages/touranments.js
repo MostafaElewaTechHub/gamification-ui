@@ -13,7 +13,7 @@ const baseURL = "http://localhost:5000/api/v1/tournament/all";
 
 const keys = {
   title: "title",
-  category: "category",
+  "": "",
   sort_order: "sort order",
   max_size: "maximum size",
   start_time: "start time",
