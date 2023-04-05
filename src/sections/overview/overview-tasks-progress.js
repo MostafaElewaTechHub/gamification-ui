@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import UsersIcon from '@heroicons/react/24/solid/UsersIcon';
+import ArrowTrendingUpIcon from '@heroicons/react/24/solid/ArrowTrendingUpIcon';
 import {
   Avatar,
   Box,
@@ -29,7 +30,7 @@ export const OverviewTasksProgress = (props) => {
               gutterBottom
               variant="overline"
             >
-              Active Users
+              Engagement Increase
             </Typography>
             <Typography variant="h4">
               {value}%
