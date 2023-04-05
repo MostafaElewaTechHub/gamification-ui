@@ -79,20 +79,20 @@ export default function TouranmentForm() {
     let myvalue = `{"questions": [`;
     let lst = [];
     if (q1 && a1) {
-      lst.push(`{"question": "${q1}","answer": ${a1},"image":"${keyvalue[file1]}"}`)
+      lst.push(`{"question": "${q1}","answer": ${a1},"image":"${keyvalue[file1]}"}`);
     }
     if (q2 && a2) {
-      lst.push(`{"question": "${q2}","answer": ${a2},"image":"${keyvalue[file2]}"}`)
+      lst.push(`{"question": "${q2}","answer": ${a2},"image":"${keyvalue[file2]}"}`);
     }
     if (q3 && a3) {
-      lst.push(`{"question": "${q3}","answer": ${a3},"image":"${keyvalue[file3]}"}`)
+      lst.push(`{"question": "${q3}","answer": ${a3},"image":"${keyvalue[file3]}"}`);
     }
     if (q4 && a4) {
-      lst.push(`{"question": "${q4}","answer": ${a4},"image":"${keyvalue[file4]}"}`)
+      lst.push(`{"question": "${q4}","answer": ${a4},"image":"${keyvalue[file4]}"}`);
     }
-    let v = lst.join(",")
+    let v = lst.join(",");
     myvalue += v;
-    myvalue += `]}`
+    myvalue += `]}`;
     try {
       let res = await axios.post(
         baseURL,
@@ -121,7 +121,7 @@ export default function TouranmentForm() {
             title,
             description,
             category: 0,
-            startTime: 1648622837,
+            startTime,
             endTime: 0,
             maxSize,
             maxNumScore: 2,
@@ -210,7 +210,10 @@ export default function TouranmentForm() {
             type="datetime-local"
             size="medium"
             label="Touranment Start Time"
-            onChange={(e) => console.log(e.target.value)}
+            onChange={(e) => {
+              console.log(new Date(e.target.value).getTime() / 1000);
+              setStartTime(Math.floor(new Date(e.target.value).getTime() / 1000));
+            }}
             InputLabelProps={{
               shrink: true,
             }}
