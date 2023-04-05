@@ -27,7 +27,7 @@ function Page() {
     try {
       let res = await axios.post(baseURL, {
         notification: {
-          subject: "New tournment",
+          subject: title,
           content: {
             message: "you have been added to a new tournment",
           },
