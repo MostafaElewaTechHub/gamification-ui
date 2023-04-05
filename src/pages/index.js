@@ -10,6 +10,7 @@ import { OverviewTasksProgress } from "src/sections/overview/overview-tasks-prog
 import { OverviewTotalCustomers } from "src/sections/overview/overview-total-customers";
 import { OverviewTotalProfit } from "src/sections/overview/overview-total-profit";
 import { OverviewTraffic } from "src/sections/overview/overview-traffic";
+import { Active } from "src/sections/overview/active";
 
 const now = new Date();
 
@@ -31,7 +32,7 @@ const Page = () => (
             <OverviewBudget difference={12} positive sx={{ height: "100%" }} value="20" />
           </Grid>
           <Grid xs={12} sm={6} lg={3}>
-          <OverviewTasksProgress sx={{ height: "100%" }} value={60} />
+          <Active sx={{ height: "100%" }} value={40} />
           </Grid>
           <Grid xs={12} sm={6} lg={3}>
             <OverviewTotalCustomers
