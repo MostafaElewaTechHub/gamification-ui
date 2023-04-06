@@ -3,7 +3,10 @@ import { Box, Container } from "@mui/material";
 import axios from "axios";
 import Button from "@mui/material/Button";
 import { useRouter } from "next/navigation";
+import LinearProgress from "@mui/material/LinearProgress";
+import PlusIcon from "@heroicons/react/24/solid/PlusIcon";
 
+import { SvgIcon } from "@mui/material";
 import { Layout as DashboardLayout } from "src/layouts/dashboard/layout";
 import BasicTable from "src/components/touranmentsTable";
 import { useState, useEffect } from "react";
@@ -39,12 +42,10 @@ function Page({}) {
       const data = response;
       setTournment(data.data);
       setLoading(false);
-
-      console.log(typeof data.data);
     };
     fetchData();
   }, [tournment]);
-  // console.log(tournment);
+
   return (
     <>
       <Head>
@@ -70,12 +71,22 @@ function Page({}) {
               type="submit"
               margin="normal"
               size="large"
+              style={{ paddingLeft: "13px", paddingRight: "13px" }}
             >
-              Create Tournment
+              <SvgIcon fontSize="small">
+                <PlusIcon />
+              </SvgIcon>
+              Create New
             </Button>
           </Grid>
 
-          {loading ? <h1>loading</h1> : <BasicTable objects={keys} tournments={tournment} />}
+          {loading ? (
+            <Box sx={{ width: "100%" }}>
+              <LinearProgress />
+            </Box>
+          ) : (
+            <BasicTable objects={keys} tournments={tournment} />
+          )}
         </Container>
       </Box>
     </>

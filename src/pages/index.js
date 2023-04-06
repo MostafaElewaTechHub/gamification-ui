@@ -17,7 +17,7 @@ const now = new Date();
 const Page = () => (
   <>
     <Head>
-      <title>Overview | Devias Kit</title>
+      <title>Overview</title>
     </Head>
     <Box
       component="main"
@@ -32,7 +32,7 @@ const Page = () => (
             <OverviewBudget difference={12} positive sx={{ height: "100%" }} value="20" />
           </Grid>
           <Grid xs={12} sm={6} lg={3}>
-          <Active sx={{ height: "100%" }} value={40} />
+            <Active sx={{ height: "100%" }} value={40} />
           </Grid>
           <Grid xs={12} sm={6} lg={3}>
             <OverviewTotalCustomers
@@ -43,9 +43,9 @@ const Page = () => (
             />
           </Grid>
           <Grid xs={12} sm={6} lg={3}>
-          <OverviewTasksProgress sx={{ height: "100%" }} value={60} />
+            <OverviewTasksProgress sx={{ height: "100%" }} value={60} />
           </Grid>
-          
+
           <Grid xs={12} lg={8}>
             <OverviewSales
               chartSeries={[
@@ -72,40 +72,40 @@ const Page = () => (
             <OverviewLatestProducts
               products={[
                 {
-                  id: '5e887ac47eed253091be10cb',
-                    city: 'Cleveland',
-                  avatar: '/assets/avatars/avatar-carson-darrin.png',
-                  email: 'carson.darrin@devias.io',
-                  name: 'Carson Darrin'
+                  id: "5e887ac47eed253091be10cb",
+                  city: "Giza",
+                  avatar: "/assets/avatars/avatar-carson-darrin.png",
+                  email: "carson.darrin@devias.io",
+                  name: "Mostafa Elewa",
                 },
                 {
-                  id: '5e887b7602bdbc4dbb234b27',
-                  city: 'North Canton',
-                  avatar: '/assets/avatars/avatar-jie-yan-song.png',
-                  email: 'jie.yan.song@devias.io',
-                  name: 'Jie Yan Song'
+                  id: "5e887b7602bdbc4dbb234b27",
+                  city: "Elmnia",
+                  avatar: "/assets/avatars/avatar-jie-yan-song.png",
+                  email: "jie.yan.song@devias.io",
+                  name: "Hamza Gamal",
                 },
                 {
-                  id: '5e86805e2bafd54f66cc95c3',
-                  city: 'San Diego',
-                  avatar: '/assets/avatars/avatar-miron-vitold.png',
-                  email: 'miron.vitold@devias.io',
-                  name: 'Miron Vitold'
+                  id: "5e86805e2bafd54f66cc95c3",
+                  city: "Cairo",
+                  avatar: "/assets/avatars/avatar-miron-vitold.png",
+                  email: "miron.vitold@devias.io",
+                  name: "Haytham Fadaly",
                 },
                 {
-                  id: '5e887d0b3d090c1b8f162003',
-                  city: 'Carson City',
-                  avatar: '/assets/avatars/avatar-omar-darboe.png',
-                  email: 'omar.darobe@devias.io',
-                  name: 'Omar Darobe'
+                  id: "5e887d0b3d090c1b8f162003",
+                  city: "Giza",
+                  avatar: "/assets/avatars/avatar-omar-darboe.png",
+                  email: "omar.darobe@devias.io",
+                  name: "Mohamed Ehab",
                 },
                 {
-                  id: '5e8877da9a65442b11551975',
-                  city: 'Murray',
-                  avatar: '/assets/avatars/avatar-iulia-albu.png',
-                  email: 'iulia.albu@devias.io',
-                  name: 'Iulia Albu'
-                }
+                  id: "5e8877da9a65442b11551975",
+                  city: "Cairo",
+                  avatar: "/assets/avatars/avatar-iulia-albu.png",
+                  email: "iulia.albu@devias.io",
+                  name: "Menna Ramadan",
+                },
               ]}
               sx={{ height: "100%" }}
             />
@@ -118,36 +118,36 @@ const Page = () => (
                   ref: "DEV1049",
                   name: "Car Name Game",
                   updatedAt: subHours(now, 6).getTime(),
-                  count: 50
+                  count: 50,
                 },
                 {
                   id: "5ece2c0d16f70bff2cf86cd8",
                   ref: "DEV1048",
                   name: "Guess the City",
                   updatedAt: subDays(subHours(now, 8), 2).getTime(),
-                  count: 30
+                  count: 30,
                 },
                 {
                   id: "b393ce1b09c1254c3a92c827",
                   ref: "DEV1047",
                   name: "Gadget Guess",
                   updatedAt: subDays(subHours(now, 1), 1).getTime(),
-                  count: 25
+                  count: 25,
                 },
                 {
                   id: "a6ede15670da63f49f752c89",
                   ref: "DEV1046",
                   name: "Fawazeer Ramadan",
                   updatedAt: subDays(subHours(now, 3), 3).getTime(),
-                  count: 20
+                  count: 20,
                 },
                 {
                   id: "bcad5524fe3a2f8f8620ceda",
                   ref: "DEV1045",
                   name: "Guess the Brand Name",
                   updatedAt: subDays(subHours(now, 5), 6).getTime(),
-                  count: 10
-                }
+                  count: 10,
+                },
               ]}
               sx={{ height: "100%" }}
             />

@@ -12,6 +12,7 @@ import axios from "axios";
 import QuizForm from "./quizCreation";
 import Alert from "@mui/material/Alert";
 import { useRouter } from "next/navigation";
+import Tooltip from "@mui/material/Tooltip";
 
 const baseURL = "http://localhost:5000/api/v1/createCompetitionTrueFalse/";
 
@@ -182,17 +183,22 @@ export default function TouranmentForm() {
         </Grid>
 
         <Grid item xs={12} sm={6}>
-          <TextField
-            id="outlined-number"
-            label=" Max Size"
-            defaultValue={0}
-            size="medium"
-            type="number"
-            onChange={(e) => setMaxSize(Number(e.target.value))}
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
+          <Tooltip
+            title="Max Number of users that can join the tournament"
+            placement="bottom-start"
+          >
+            <TextField
+              id="outlined-number"
+              label=" Max Size"
+              defaultValue={0}
+              size="medium"
+              type="number"
+              onChange={(e) => setMaxSize(Number(e.target.value))}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          </Tooltip>
         </Grid>
         <Grid item xs={12} sm={12}>
           <TextField
@@ -214,7 +220,6 @@ export default function TouranmentForm() {
             size="medium"
             label=" Start Time"
             onChange={(e) => {
-              console.log(new Date(e.target.value).getTime() / 1000);
               setStartTime(Math.floor(new Date(e.target.value).getTime() / 1000));
             }}
             InputLabelProps={{
@@ -230,14 +235,20 @@ export default function TouranmentForm() {
             InputLabelProps={{
               shrink: true,
             }}
+            onChange={(e) => {
+              setEndTime(Math.floor(new Date(e.target.value).getTime() / 1000));
+            }}
           ></TextField>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <FormLabel> Sort Type</FormLabel>
+          <Tooltip title="How You want to sort the users in tournament" placement="bottom-start">
+            <FormLabel> Sort Type</FormLabel>
+          </Tooltip>
+
           <SelectMenu setValue={setSortOrder} type="sort" />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <FormLabel> Operator</FormLabel>
+          <FormLabel> Scoring Criteria</FormLabel>
           <SelectMenu setValue={setOperator} type="operator" />
         </Grid>
 
