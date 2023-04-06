@@ -13,6 +13,7 @@ import QuizForm from "./quizCreation";
 import Alert from "@mui/material/Alert";
 import { useRouter } from "next/navigation";
 import Tooltip from "@mui/material/Tooltip";
+import FilterSelectMenu from "./filterDropDownMenu";
 
 const baseURL = "http://localhost:5000/api/v1/createCompetitionTrueFalse/";
 
@@ -55,7 +56,8 @@ export default function TouranmentForm() {
   const [endTime, setEndTime] = useState(0);
   const [fields, setFields] = useState({ "tuornament-type": "MCQ" });
   const [theme, setTheme] = useState();
-  const [filter, setFilter] = useState();
+  const [filter, setFilter] = useState("None");
+  const [filterValue,setFilterValue] = useState();
 
   const [q1, setQ1] = useState("");
   const [a1, setA1] = useState(true);
@@ -74,6 +76,9 @@ export default function TouranmentForm() {
   const arrSetsQues = [setQ1, setQ2, setQ3, setQ4];
   const arrSetsAns = [setA1, setA2, setA3, setA4];
   const arrSetsFiles = [setFile1, setFile2, setFile3, setFile4];
+
+let  filSize = 6;
+let  themeSize = 6;
 
   //   const navigate = useNavigate();
   let handleSubmit = async (e) => {
@@ -111,7 +116,7 @@ export default function TouranmentForm() {
           },
           users: [],
           filter: {
-            location: governorate,
+            location: filterValue,
           },
           tournament: {
             authoritative: false,
@@ -166,7 +171,10 @@ export default function TouranmentForm() {
   };
 
   console.log(q1, a1);
-
+  if (filter === "None") {
+    filSize = 0;
+    themeSize = 12;
+  }
   return (
     <form onSubmit={handleSubmit}>
       <h2>Create Tournament</h2>
@@ -256,12 +264,12 @@ export default function TouranmentForm() {
           <FormLabel> Filter</FormLabel>
           <SelectMenu setValue={setFilter} type="criteria" />
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <FormLabel> Government</FormLabel>
-          <SelectMenu setValue={setGovernorate} type="govern" />
+
+        <Grid item xs={12} sm={filSize}>
+            <FilterSelectMenu setValue={setFilterValue} filterType={filter}/>
         </Grid>
 
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={themeSize}>
           <FormLabel> Theme</FormLabel>
           <ThemeSelectMenu util={setFields} setValue={setTheme} />
         </Grid>

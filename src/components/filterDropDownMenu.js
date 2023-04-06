@@ -3,6 +3,9 @@ import SelectUnstyled, { selectUnstyledClasses } from "@mui/base/SelectUnstyled"
 import OptionUnstyled, { optionUnstyledClasses } from "@mui/base/OptionUnstyled";
 import PopperUnstyled from "@mui/base/PopperUnstyled";
 import { styled, Box } from "@mui/system";
+import { useState } from "react";
+import SelectMenu from "./dropDownMenu";
+import { TextField, FormLabel } from "@mui/material";
 
 const blue = {
   100: "#DAECFF",
@@ -149,57 +152,40 @@ const CustomSelect = React.forwardRef(function CustomSelect(props, ref) {
   return <SelectUnstyled {...props} ref={ref} slots={slots} />;
 });
 
-export default function SelectMenu(props) {
-  const type = props.type;
+export default function FilterSelectMenu(props) {
+  const type = props.filterType;
+
   const setValue = props.setValue;
-  // console.log(props);
+
   const handleChange = (event, newValue) => {
     if (event) {
-      console.log("🚀 ~ file: dropDownMenu.js:157 ~ handleChange ~ newValue:", newValue);
+      console.log("filter value : ", newValue);
       setValue(newValue);
     }
   };
-  let data = null;
-  // console.log(props);
-  if (type == "sort") {
-    data = [{ ascending: "Ascending" }, { descending: "Descending" }];
-  }
-  if (type === "operator") {
-    data = [{ best: "Best" }, { set: "Set" }, { increment: "Incrementally" }];
-  }
-  if (type === "criteria") {
-    data = [{ location: "Location" }, { age: "Age" }];
-  }
-  if (type === "govern") {
-    data = [{ Giza: "Giza" }, { Cairo: "Cairo" }, { Ismailia: "Ismailia" }];
-  }
-  if (type === "theme") {
-    data = ["true_false", "mcq", "points"];
-  }
-  if (type === "T&F") {
-    data = [{"true":"True"},{"false": "False"}];
-  }
+
   return (
-    <div>
-      <Box>
-        <CustomSelect
-          defaultValue={"None"}
-          id="named-select"
-          name="demo-select"
-          onChange={handleChange}
-        >
-          {data.map((x) => {
-            const keys = Object.keys(x);
-            let key = keys[0];
-            console.log(key);
-            return (
-              <StyledOption key={key} value={key}>
-                {x[key]}
-              </StyledOption>
-            );
-          })}
-        </CustomSelect>
-      </Box>
-    </div>
+        <>
+      {(type === "location") ? (
+        <>
+        <FormLabel>Government</FormLabel>
+        <SelectMenu setValue={setValue} type="govern" />
+        </>
+      ) : (type === "age") ? (
+        <>
+        <TextField
+          id="outlined-number"
+          label="Age"
+          defaultValue={0}
+          size="medium"
+          type="number"
+          onChange={(e) => handleChange(e, Number(e.target.value))}
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+        </>
+      ) : null}
+      </>
   );
 }
