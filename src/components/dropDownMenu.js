@@ -173,7 +173,7 @@ export default function SelectMenu(props) {
     data = [
       { key: "Best", value: "best", description: "Choose the best score the user had" },
       { key: "Set", value: "set", description: "Reset the old score and choose the last one only" },
-      { key: "Incrementally", value: "increment", description: "Add the new score to the old one" },
+      { key: "Accumulated", value: "increment", description: "Add the new score to the old one" },
     ];
     // data = [{ best: "Best" }, { set: "Set" }, { increment: "Incrementally" }];
   }
