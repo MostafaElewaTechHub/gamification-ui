@@ -38,7 +38,6 @@ export default function TouranmentForm() {
       "https://aawsat.com/sites/default/files/styles/400x230/public/2015/06/16/raminside_1.jpg?itok=0Yb2dJ8e",
   };
 
-  console.log(new Date().getTime());
   const router = useRouter();
 
   const [title, setTitle] = useState("");
@@ -244,16 +243,23 @@ export default function TouranmentForm() {
           <Tooltip title="How You want to sort the users in tournament" placement="bottom-start">
             <FormLabel> Sort Type</FormLabel>
           </Tooltip>
-
           <SelectMenu setValue={setSortOrder} type="sort" />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <FormLabel> Scoring Criteria</FormLabel>
+          <Tooltip title="How the score will be calculated" placement="bottom-start">
+            <FormLabel> Scoring Criteria</FormLabel>
+          </Tooltip>
           <SelectMenu setValue={setOperator} type="operator" />
         </Grid>
 
         <Grid item xs={12} sm={6}>
-          <FormLabel> Filter</FormLabel>
+          <Tooltip
+            title="Filter the users that can join tournament based on"
+            placement="bottom-start"
+          >
+            <FormLabel>Filter</FormLabel>
+          </Tooltip>
+
           <SelectMenu setValue={setFilter} type="criteria" />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -262,7 +268,9 @@ export default function TouranmentForm() {
         </Grid>
 
         <Grid item xs={12} sm={6}>
-          <FormLabel> Theme</FormLabel>
+          <Tooltip title="Type of tournament " placement="bottom-start">
+            <FormLabel> Type </FormLabel>
+          </Tooltip>
           <ThemeSelectMenu util={setFields} setValue={setTheme} />
         </Grid>
         <Grid item xs={12} sm={12}>

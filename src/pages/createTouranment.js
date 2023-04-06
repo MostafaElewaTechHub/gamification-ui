@@ -21,53 +21,6 @@ function Page() {
   const [governorate, setGovernorate] = useState("Giza");
   const [endTime, setEndTime] = useState(0);
 
-  //   const navigate = useNavigate();
-  let handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      let res = await axios.post(baseURL, {
-        notification: {
-          subject: title,
-          content: {
-            message: "you have been added to a new tournment",
-          },
-          code: 101,
-          persistent: true,
-        },
-        users: [],
-        filter: {
-          location: governorate,
-        },
-        tournament: {
-          authoritative: false,
-          sortOrder,
-          operator,
-          duration: 360000,
-          resetSchedule: "0,50 0,59 0,3 ? * * *",
-          metadata: {
-            weatherConditions: "rain",
-          },
-          title,
-          description,
-          category: 0,
-          startTime,
-          endTime,
-          maxSize,
-          maxNumScore: 2,
-          joinRequired: true,
-        },
-      });
-      console.log(res);
-      if (res.status === 200) {
-      } else {
-        console.log(res);
-        setMessage("Some error occured");
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   return (
     <>
       <Head>

@@ -3,6 +3,7 @@ import SelectUnstyled, { selectUnstyledClasses } from "@mui/base/SelectUnstyled"
 import OptionUnstyled, { optionUnstyledClasses } from "@mui/base/OptionUnstyled";
 import PopperUnstyled from "@mui/base/PopperUnstyled";
 import { styled, Box } from "@mui/system";
+import Tooltip from "@mui/material/Tooltip";
 
 const blue = {
   100: "#DAECFF",
@@ -162,22 +163,66 @@ export default function SelectMenu(props) {
   let data = null;
   // console.log(props);
   if (type == "sort") {
-    data = [{ ascending: "Ascending" }, { descending: "Descending" }];
+    data = [
+      { key: "Ascending", value: "ascending", description: "Sort ascending of users" },
+      { key: "Descending", value: "descending", description: "Sort descending of users" },
+    ];
+    // data = [{ ascending: "Ascending" }, { descending: "Descending" }];
   }
   if (type === "operator") {
-    data = [{ best: "Best" }, { set: "Set" }, { increment: "Incrementally" }];
+    data = [
+      { key: "Best", value: "best", description: "Choose the best score the user had" },
+      { key: "Set", value: "set", description: "Reset the old score and choose the last one only" },
+      { key: "Incrementally", value: "increment", description: "Add the new score to the old one" },
+    ];
+    // data = [{ best: "Best" }, { set: "Set" }, { increment: "Incrementally" }];
   }
   if (type === "criteria") {
-    data = [{ location: "Location" }, { age: "Age" }, { height: "Height" }];
+    data = [
+      {
+        key: "Location",
+        value: "location",
+        description: "Filter the users that can join the tournament based on location",
+      },
+      {
+        key: "Age",
+        value: "age",
+        description: "Filter the users that can join the tournament based on age",
+      },
+      {
+        key: "Height",
+        value: "height",
+        description: "Filter the users that can join the tournament based on height",
+      },
+    ];
+    // data = [{ location: "Location" }, { age: "Age" }, { height: "Height" }];
   }
   if (type === "govern") {
-    data = [{ Giza: "Giza" }, { Cairo: "Cairo" }, { Ismailia: "Ismailia" }];
+    data = [
+      { key: "Giza", value: "Giza", description: "city of Giza" },
+      { key: "Cairo", value: "Cairo", description: "city of Cairo" },
+      { key: "Damietta", value: "Damietta", description: "city of Damietta" },
+    ];
+    // data = [{ Giza: "Giza" }, { Cairo: "Cairo" }, { Ismailia: "Ismailia" }];
   }
   if (type === "theme") {
-    data = ["true_false", "mcq", "points"];
+    data = [
+      {
+        key: "True and False",
+        value: "true_false",
+        description: "Create true and false questions",
+      },
+      { key: "Multiple Choose Questions", value: "mcq", description: "Create mcq questions" },
+      { key: "Points", value: "points", description: "Depends on points from the pplication" },
+    ];
+    // data = ["true_false", "mcq", "points"];
   }
   if (type === "T&F") {
-    data = [{"true":"True"},{"false": "False"}];
+    data = [
+      { key: "Ascending", value: "ascending", description: "ascending" },
+      { key: "Descending", value: "descending", description: "dscending" },
+    ];
+    // data = [{ true: "True" }, { false: "False" }];
   }
   return (
     <div>
@@ -189,13 +234,12 @@ export default function SelectMenu(props) {
           onChange={handleChange}
         >
           {data.map((x) => {
-            const keys = Object.keys(x);
-            let key = keys[0];
-            console.log(key);
             return (
-              <StyledOption key={key} value={key}>
-                {x[key]}
-              </StyledOption>
+              <Tooltip key={x.key} title={x.description} placement="right-end">
+                <StyledOption key={x.key} value={x.value}>
+                  {x["key"]}
+                </StyledOption>
+              </Tooltip>
             );
           })}
         </CustomSelect>

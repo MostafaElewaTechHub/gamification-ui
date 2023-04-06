@@ -4,6 +4,7 @@ import OptionUnstyled, { optionUnstyledClasses } from "@mui/base/OptionUnstyled"
 import PopperUnstyled from "@mui/base/PopperUnstyled";
 import { styled, Box } from "@mui/system";
 import { useState } from "react";
+import { Tooltip } from "@mui/material";
 
 const blue = {
   100: "#DAECFF",
@@ -151,23 +152,31 @@ const CustomSelect = React.forwardRef(function CustomSelect(props, ref) {
 });
 
 export default function SelectMenu(props) {
-
   const type = props.type;
 
   const setValue = props.setValue;
-  
+
   const setFields = props.util;
 
   const handleChange = (event, newValue) => {
     if (event) {
       console.log("🚀 ~ file: dropDownMenu.js:157 ~ handleChange ~ newValue:", newValue);
       setValue(newValue);
-      
+
       const value = newValue;
-        setFields({"tuornament-type":newValue});
+      setFields({ "tuornament-type": newValue });
     }
   };
-  let data = ["true_false", "mcq", "points"];
+  const data = [
+    {
+      key: "True and False",
+      value: "true_false",
+      description: "Create true and false questions",
+    },
+    { key: "Multiple Choose Questions", value: "mcq", description: "Create mcq questions" },
+    { key: "Points", value: "points", description: "Depends on points from the pplication" },
+  ];
+  // let data = ["true_false", "mcq", "points"];
 
   return (
     <div>
@@ -178,12 +187,13 @@ export default function SelectMenu(props) {
           name="demo-select"
           onChange={handleChange}
         >
-          {data.map((x, index) => {
-            // console.log(x);
+          {data.map((x) => {
             return (
-              <StyledOption key={x} value={x} index={index}>
-                {x}
-              </StyledOption>
+              <Tooltip title={x.description} key={x.value} placement="right-end">
+                <StyledOption key={x.value} value={x.value}>
+                  {x.key}
+                </StyledOption>
+              </Tooltip>
             );
           })}
         </CustomSelect>
