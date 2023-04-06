@@ -213,7 +213,7 @@ export default function SelectMenu(props) {
         description: "Create true and false questions",
       },
       { key: "Multiple Choose Questions", value: "mcq", description: "Create mcq questions" },
-      { key: "Points", value: "points", description: "Depends on points from the pplication" },
+      { key: "Points", value: "points", description: "Depends on points from the aplication" },
     ];
     // data = ["true_false", "mcq", "points"];
   }

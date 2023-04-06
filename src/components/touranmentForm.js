@@ -56,7 +56,7 @@ export default function TouranmentForm() {
   const [fields, setFields] = useState({ "tuornament-type": "MCQ" });
   const [theme, setTheme] = useState();
   const [filter, setFilter] = useState("None");
-  const [filterValue,setFilterValue] = useState();
+  const [filterValue, setFilterValue] = useState();
 
   const [q1, setQ1] = useState("");
   const [a1, setA1] = useState(true);
@@ -76,8 +76,8 @@ export default function TouranmentForm() {
   const arrSetsAns = [setA1, setA2, setA3, setA4];
   const arrSetsFiles = [setFile1, setFile2, setFile3, setFile4];
 
-let  filSize = 6;
-let  themeSize = 6;
+  let filSize = 6;
+  let themeSize = 6;
 
   //   const navigate = useNavigate();
   let handleSubmit = async (e) => {
@@ -130,7 +130,7 @@ let  themeSize = 6;
             description,
             category: 0,
             startTime,
-            endTime: 0,
+            endTime,
             maxSize,
             maxNumScore: 1000,
             joinRequired: true,
@@ -152,16 +152,14 @@ let  themeSize = 6;
           },
         }
       );
-      console.log(res);
       if (res.status === 200) {
-        setMessage("Succefully created And you will be redirected within Two seconds");
+        setMessage("Successfully created. You will be redirected within two seconds.");
         setTimeout(() => {
           router.push("/touranments");
         }, 2000);
 
         console.log("created");
       } else {
-        console.log(res);
         setMessage("Some error occured");
       }
     } catch (err) {
@@ -272,7 +270,7 @@ let  themeSize = 6;
         </Grid>
 
         <Grid item xs={12} sm={filSize}>
-            <FilterSelectMenu setValue={setFilterValue} filterType={filter}/>
+          <FilterSelectMenu setValue={setFilterValue} filterType={filter} />
         </Grid>
 
         <Grid item xs={12} sm={themeSize}>

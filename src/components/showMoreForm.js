@@ -82,7 +82,9 @@ export default function ShowMoreForm({ tournment }) {
             InputProps={{
               readOnly: true,
             }}
-            defaultValue={tournment.endTime ? tournment.endTime : "Infinity"}
+            defaultValue={
+              tournment.endTime ? new Date(tournment.endTime * 1000).toLocaleString() : "Infinity"
+            }
           ></TextField>
         </Grid>
         <Grid item xs={12} sm={4}>
