@@ -180,6 +180,11 @@ export default function SelectMenu(props) {
   if (type === "criteria") {
     data = [
       {
+        key: "None",
+        value: "None",
+        description: "No Filter",
+      },
+      {
         key: "Location",
         value: "location",
         description: "Filter the users that can join the tournament based on location",
@@ -188,11 +193,6 @@ export default function SelectMenu(props) {
         key: "Age",
         value: "age",
         description: "Filter the users that can join the tournament based on age",
-      },
-      {
-        key: "Height",
-        value: "height",
-        description: "Filter the users that can join the tournament based on height",
       },
     ];
     // data = [{ location: "Location" }, { age: "Age" }, { height: "Height" }];
