@@ -219,8 +219,8 @@ export default function SelectMenu(props) {
   }
   if (type === "T&F") {
     data = [
-      { key: "Ascending", value: "ascending", description: "ascending" },
-      { key: "Descending", value: "descending", description: "dscending" },
+      { key: "True", value: "true", description: "" },
+      { key: "False", value: "false", description: "" },
     ];
     // data = [{ true: "True" }, { false: "False" }];
   }

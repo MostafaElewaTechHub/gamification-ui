@@ -160,7 +160,7 @@ export default function SelectMenu(props) {
 
   const handleChange = (event, newValue) => {
     if (event) {
-      console.log("🚀 ~ file: dropDownMenu.js:157 ~ handleChange ~ newValue:", newValue);
+      // console.log("🚀 ~ file: dropDownMenu.js:157 ~ handleChange ~ newValue:", newValue);
       setValue(newValue);
 
       const value = newValue;
