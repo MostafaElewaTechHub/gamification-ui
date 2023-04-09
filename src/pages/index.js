@@ -17,7 +17,7 @@ const now = new Date();
 const Page = () => (
   <>
     <Head>
-      <title>Overview</title>
+      <title>Dashboard</title>
     </Head>
     <Box
       component="main"
